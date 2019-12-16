@@ -1,0 +1,15 @@
+[{
+    "index": {
+      "_index": "elastic.index",
+      "_type": "elastic.type"
+    }
+  },
+  {
+    "author": "Aldi",
+    "quote": "Selamat pagi dunia"
+  },
+  {
+    "author": "Wildan",
+    "quote": "Selamat malam dunia"
+  }
+]

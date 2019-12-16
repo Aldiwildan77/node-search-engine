@@ -1,0 +1,22 @@
+{
+  "name": "node-search-engine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "pm2-runtime start ./src/main.js --name node_app",
+    "stop": "pm2-runtime stop node_app"
+  },
+  "keywords": [],
+  "author": "Muhammad Wildan Aldiansyah",
+  "license": "MIT",
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.5.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.2"
+  }
+}

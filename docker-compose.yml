@@ -1,0 +1,43 @@
+version: '3.6'
+services: 
+  api:
+    image: node:10.16.3
+    container_name: node-search-engine
+    build: .
+    ports: 
+      - 5015:5015
+    environment: 
+      - NODE_ENV=development
+      - ES_HOST=elasticsearch
+      - NODE_PORT=5015
+      - ELASTIC_URL=http://elasticsearch:9200
+    volumes: 
+      - .:/usr/src/app/quotes
+    command: npm run start
+    links: 
+      - elasticsearch
+    depends_on: 
+      - elasticsearch
+    networks: 
+      - esnet
+  elasticsearch:
+    container_name: node-elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    volumes: 
+      - esdata:/usr/share/elasticsearch/data
+    environment: 
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    logging: 
+      driver: none
+    ports: 
+      - 9300:9300
+      - 9200:9200
+    networks: 
+      - esnet
+
+volumes:
+  esdata:
+networks: 
+  esnet:
